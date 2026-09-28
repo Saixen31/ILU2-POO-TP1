@@ -83,8 +83,43 @@ public class Village {
 					nbEtalProduit ++;
 				}
 			}
-			Etal etalProduit = new 
+			int indexRemplissage = 0;
+			Etal[] etalProduit = new Etal[nbEtalProduit];
+			for(int j = 0; j < nbEtal; j++) {
+				if(etals[j].contientProduit(produit)) {
+					etalProduit[indexRemplissage]= etals[j];
+					indexRemplissage++;
+				}
+			}
+			return etalProduit;
 		}
+		private Etal trouverVendeur(Gaulois gaulois) {
+			for(int i = 0; i<nbEtal; i++) {
+				if(etals[i].isEtalOccupe() && etals[i].getVendeur()== gaulois) {
+					return etals[i];
+				}
+				return null;
+			}
+		}
+		private String afficherMarche() {
+			StringBuilder affichage = new StringBuilder();
+			int nbEtalsVides = 0;
+			for(int i = 0; i < etals.length; i++) {
+				if (etals[i].isEtalOccupe()){
+					affichage.append(etals[i].afficherEtal());
+				}
+				else {
+					nbEtalsVides++;
+				}
+			}
+			if(nbEtalsVides > 0) {
+				affichage.append("")
+			}
+			}
+		}
+		
 	}
 }
+
+
 	
